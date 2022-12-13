@@ -8,7 +8,7 @@ export const getProductos = async (req, res) => {
 
   try {
     const [result] = await pool.query(
-      "SELECT * FROM tblproductos WHERE formafarmaceutica = 'JARABE' ORDER BY nombreproducto DESC"
+      "SELECT * FROM tblproductos  ORDER BY nombreproducto DESC"
     );
     res.json(result);
   } catch (error) {
