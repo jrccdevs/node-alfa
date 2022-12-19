@@ -2,7 +2,7 @@ import { uploadImage } from "../libs/cloudinary.js";
 import { pool } from "../db.js";
 import fs from 'fs-extra';
 
-
+//mostrando todos los productos por forma farmaceutica
 export const getProductos = async (req, res) => {
   
 
@@ -15,6 +15,227 @@ export const getProductos = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
+
+export const getProductosCapsulas = async (req, res) => {
+  
+
+  try {
+    const [result] = await pool.query(
+      "SELECT * FROM tblproductos WHERE formafarmaceutica = 'CAPSULAS' ORDER BY nombreproducto DESC"
+    );
+    res.json(result);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+export const getProductosComprimidos = async (req, res) => {
+  
+
+  try {
+    const [result] = await pool.query(
+      "SELECT * FROM tblproductos WHERE formafarmaceutica = 'COMPRIMIDOS' ORDER BY nombreproducto DESC"
+    );
+    res.json(result);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+export const getProductosCremas = async (req, res) => {
+  
+
+  try {
+    const [result] = await pool.query(
+      "SELECT * FROM tblproductos WHERE formafarmaceutica = 'CREMAS' ORDER BY nombreproducto DESC"
+    );
+    res.json(result);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+export const getProductosGel = async (req, res) => {
+  
+
+  try {
+    const [result] = await pool.query(
+      "SELECT * FROM tblproductos WHERE formafarmaceutica = 'GEL' ORDER BY nombreproducto DESC"
+    );
+    res.json(result);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+
+export const getProductosGotas = async (req, res) => {
+  
+
+  try {
+    const [result] = await pool.query(
+      "SELECT * FROM tblproductos WHERE formafarmaceutica = 'GOTAS' ORDER BY nombreproducto DESC"
+    );
+    res.json(result);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+
+export const getProductosGranulado = async (req, res) => {
+  
+
+  try {
+    const [result] = await pool.query(
+      "SELECT * FROM tblproductos WHERE formafarmaceutica = 'GRANULADO' ORDER BY nombreproducto DESC"
+    );
+    res.json(result);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+export const getProductosInyectable = async (req, res) => {
+  
+
+  try {
+    const [result] = await pool.query(
+      "SELECT * FROM tblproductos WHERE formafarmaceutica = 'INYECTABLE' ORDER BY nombreproducto DESC"
+    );
+    res.json(result);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+
+export const getProductosJarabe = async (req, res) => {
+  
+
+  try {
+    const [result] = await pool.query(
+      "SELECT * FROM tblproductos WHERE formafarmaceutica = 'JARABE' ORDER BY nombreproducto DESC"
+    );
+    res.json(result);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+
+export const getProductosPolvo = async (req, res) => {
+  
+
+  try {
+    const [result] = await pool.query(
+      "SELECT * FROM tblproductos WHERE formafarmaceutica = 'POLVO' ORDER BY nombreproducto DESC"
+    );
+    res.json(result);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+
+export const getProductosPomada = async (req, res) => {
+  
+
+  try {
+    const [result] = await pool.query(
+      "SELECT * FROM tblproductos WHERE formafarmaceutica = 'POMADA' ORDER BY nombreproducto DESC"
+    );
+    res.json(result);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+
+export const getProductosShampo = async (req, res) => {
+  
+
+  try {
+    const [result] = await pool.query(
+      "SELECT * FROM tblproductos WHERE formafarmaceutica = 'SHAMPO' ORDER BY nombreproducto DESC"
+    );
+    res.json(result);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+export const getProductosSolucion = async (req, res) => {
+  
+
+  try {
+    const [result] = await pool.query(
+      "SELECT * FROM tblproductos WHERE formafarmaceutica = 'SOLUCION' ORDER BY nombreproducto DESC"
+    );
+    res.json(result);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+export const getProductosSupositorio = async (req, res) => {
+  
+
+  try {
+    const [result] = await pool.query(
+      "SELECT * FROM tblproductos WHERE formafarmaceutica = 'SUPOSITORIO' ORDER BY nombreproducto DESC"
+    );
+    res.json(result);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+export const getProductosSuspencion = async (req, res) => {
+  
+
+  try {
+    const [result] = await pool.query(
+      "SELECT * FROM tblproductos WHERE formafarmaceutica = 'SUSPENCION' ORDER BY nombreproducto DESC"
+    );
+    res.json(result);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+export const getProductosTableta = async (req, res) => {
+  
+
+  try {
+    const [result] = await pool.query(
+      "SELECT * FROM tblproductos WHERE formafarmaceutica = 'TABLETA' ORDER BY nombreproducto DESC"
+    );
+    res.json(result);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 export const getProducto = async (req, res) => {
