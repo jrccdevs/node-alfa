@@ -6,6 +6,7 @@ import './config.js'
 
 import indexRoutes from './routes/index.routes.js'
 import productosRoutes from './routes/productos.routes.js'
+import carrucelRoutes from './routes/carrucel.router.js'
 
 const app = express();
 //const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -25,6 +26,7 @@ app.use(
 
 app.use(indexRoutes);
 app.use(productosRoutes);
+app.use(carrucelRoutes);
 
 //app.use(express.static(join(__dirname, '../client/dist')))
 export default app

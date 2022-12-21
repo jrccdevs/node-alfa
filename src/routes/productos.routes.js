@@ -60,4 +60,6 @@ router.put("/productos/:id", updateProductos);
 
 router.delete("/productos/:id", deleteProducto);
 
+
+
 export default router;
