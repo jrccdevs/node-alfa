@@ -1,6 +1,8 @@
 import { Router } from "express";
 import {
     getProductos,
+    getProductosId,
+    
     getProductosCapsulas,
     getProductosComprimidos,
     getProductosCremas,
@@ -26,6 +28,9 @@ import {
 const router = Router();
 // mostrando todos los productos
 router.get("/productos", getProductos);
+
+router.get("/productos/:id", getProductosId);
+
 
 router.get("/productos/capsulas", getProductosCapsulas);
 router.get("/productos/comprimidos", getProductosComprimidos);

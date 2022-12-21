@@ -14,4 +14,11 @@ import {
     password: DB_PASSWORD,
     port: DB_PORT,
     database: DB_DATABASE,
+
+
+    // host: "localhost",
+    // user: "root",
+    // password: "",
+    // port: "3306",
+    // database: "nodealfa_web",
   });
