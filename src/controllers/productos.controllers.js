@@ -199,6 +199,7 @@ export const getProductosTableta = async (req, res) => {
   }
 };
 
+// funcion prar eliminar un producto
 export const getProducto = async (req, res) => {
   try {
     const [result] = await pool.query(
