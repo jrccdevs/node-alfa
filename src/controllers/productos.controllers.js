@@ -2,7 +2,7 @@ import { uploadImage } from "../libs/cloudinary.js";
 import { pool } from "../db.js";
 import fs from "fs-extra";
 
-//mostrando todos los productos 
+//mostrando todos los productos
 export const getProductos = async (req, res) => {
   try {
     const [result] = await pool.query(
@@ -13,8 +13,6 @@ export const getProductos = async (req, res) => {
     return res.status(500).json({ message: error.message });
   }
 };
-
-
 
 //mostrando detalle de producto por ID
 export const getProductosId = async (req, res) => {
@@ -32,7 +30,46 @@ export const getProductosId = async (req, res) => {
   }
 };
 
+//mostrando todos las formas farmaceuticas
+export const getFormaFarma = async (req, res) => {
+  try {
+    const [result] = await pool.query(
+      "SELECT * FROM tblproductos  ORDER BY nombreproducto DESC"
+    );
+    res.json(result);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
 
+//mostrando todos las formas farmaceuticas
+// export const getForma = async (req, res) => {
+//   try {
+//     const [result] = await pool.query(
+//       "SELECT DISTINCT formafarmaceutica from tblproductos"
+//     );
+//     res.json(result);
+//   } catch (error) {
+//     return res.status(500).json({ message: error.message });
+//   }
+// };
+
+//mostrando detalle de producto por formaFarmaceutica
+export const getProductosCate = async (req, res) => {
+  // Recogemos un parametro por la url
+  const categoria = req.params.categoria;
+
+  try {
+    const [result] = await pool.query(
+      "SELECT * FROM tblproductos WHERE formafarmaceutica = ?",
+      [categoria]
+    );
+
+    res.json(result);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
 
 export const getProductosCapsulas = async (req, res) => {
   try {
@@ -251,7 +288,7 @@ export const createProductos = async (req, res) => {
         image,
       ]
     );
-    
+
     console.log(resultado);
 
     res.json({

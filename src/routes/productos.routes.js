@@ -2,7 +2,10 @@ import { Router } from "express";
 import {
     getProductos,
     getProductosId,
-    
+    getFormaFarma,
+    getProductosCate,
+
+    // getForma,
     getProductosCapsulas,
     getProductosComprimidos,
     getProductosCremas,
@@ -18,18 +21,26 @@ import {
     getProductosSupositorio,
     getProductosSuspencion,
     getProductosTableta,
-    getProducto,
+    // getProducto,
     createProductos,
     updateProductos,
     deleteProducto
+
   } from "../controllers/productos.controllers.js";
   
 
 const router = Router();
 // mostrando todos los productos
 router.get("/productos", getProductos);
-
 router.get("/productos/:id", getProductosId);
+
+// router.get("/forma", getForma);
+
+router.get("/formaFarmaceutica", getFormaFarma);
+router.get("/formaFarmaceutica/:categoria", getProductosCate);
+
+
+
 
 
 router.get("/productos/capsulas", getProductosCapsulas);
@@ -52,7 +63,7 @@ router.get("/productos/tableta", getProductosTableta);
 
 
 
-router.get("/productos/:id", getProducto);
+// router.get("/productos/:id", getProducto);
 
 router.post("/productos", createProductos);
 
