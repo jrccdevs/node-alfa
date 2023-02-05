@@ -2,13 +2,13 @@ import { uploadImage } from "../libs/cloudinary.js";
 import { pool } from "../db.js";
 import fs from 'fs-extra';
 
-export const createCarrucel = async (req, res) => {
+export const createImagenes = async (req, res) => {
 
 
     try {
     const { nombre,
-      
-      
+      estado,
+      categoria,
        } = req.body;
   
     let image;
@@ -22,8 +22,10 @@ export const createCarrucel = async (req, res) => {
     }
     //const {imagen} = image;
     const [resultado] = await pool.query(
-      "INSERT INTO tblcarrucel(nombre, image) VALUES (?, ?)",
+      "INSERT INTO tblcarrucel(nombre, image, estado, categoria) VALUES (?, ?, ?, ?)",
       [nombre,
+      estado,
+      categoria,
         image]
     );
     console.log(resultado)
@@ -32,6 +34,8 @@ export const createCarrucel = async (req, res) => {
     res.json({
       id: resultado.insertId,
       nombre,
+      estado,
+      categoria,
       
       image
     });
@@ -41,7 +45,7 @@ export const createCarrucel = async (req, res) => {
      }
   };
   
-  export const getCarrucel = async (req, res) => {
+  export const getImagenes = async (req, res) => {
   
 
     try {

@@ -27,11 +27,11 @@ import {
     deleteProducto
 
   } from "../controllers/productos.controllers.js";
-  
+  import {authenticacion} from '../controllers/authenticacion.controllers.js'
 
 const router = Router();
 // mostrando todos los productos
-router.get("/productos", getProductos);
+router.get("/productos", authenticacion, getProductos);
 router.get("/productos/:id", getProductosId);
 
 // router.get("/forma", getForma);

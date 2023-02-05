@@ -6,8 +6,9 @@ import cors from 'cors'
 import './config.js'
 import indexRoutes from './routes/index.routes.js'
 import productosRoutes from './routes/productos.routes.js'
-import carrucelRoutes from './routes/carrucel.router.js'
+import imagenesRoutes from './routes/imagenes.router.js'
 import usuariosRoutes from './routes/authenticacion.routes.js'
+
 
 const app = express();
 //const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -27,8 +28,10 @@ app.use(cookieParser())
 
 app.use(indexRoutes);
 app.use(productosRoutes);
-app.use(carrucelRoutes);
+app.use(imagenesRoutes);
 app.use(usuariosRoutes);
+
+
 
 //app.use(express.static(join(__dirname, '../client/dist')))
 export default app

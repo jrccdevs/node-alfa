@@ -1,11 +1,8 @@
-//import passport from 'passport'
-//const api = require('passport-local').Strategy;
 
-//import { uploadImage } from "../libs/cloudinary.js";
 import { pool } from "../db.js";
-//import fs from 'fs-extra';
 import bcryptjs from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import promisify from 'util';
 
 
 export const createUsuarios = async (req, res) => {
@@ -67,17 +64,20 @@ export const loginUsuarios = async (req, res) => {
   try {
     const email = req.body.email
     const password = req.body.password
-   // let passhash = await bcryptjs.hash(password, 10);
+    let passwordHaash =  bcryptjs.hashSync(password, 8);
+
+   
     if (!email || !password) {
       console.log('ingrese email y contraseña')
     } else {
-       await pool.query("SELECT * FROM tblusuarios WHERE email = ?", [email], async(error, results, fields) => {
-
-        if (results.length === 0 || !(await bcryptjs.compare(password, results[0].password))) {
+      console.log('entrando')
+      const [result] =  await pool.query("SELECT * FROM tblusuarios WHERE email = ?", [email])
+        
+        if (result.length === 0 || !(await bcryptjs.compare(password, result[0].password))) {
           console.log("email y/o Password incorrectas")
         } else {
           //inicio de sesión OK
-          const id = results[0].id
+          const id = result[0].id
           const token = jwt.sign({ id: id }, process.env.JWT_SECRETO, {
             expiresIn: process.env.JWT_TIEMPO_EXPIRA
           })
@@ -92,12 +92,36 @@ export const loginUsuarios = async (req, res) => {
           res.cookie('jwt', token, cookiesOptions)
           console.log("¡LOGIN CORRECTO!")
         }
-     //   res.json(result);
-      })
-     
+       
+      
     }
 
   } catch (error) {
     console.log(error)
   }
+}
+
+
+export const authenticacion = async (req, res, next)=>{
+  if (req.cookies.jwt) {
+      try {
+          const decodificada = await promisify(jwt.verify)(req.cookies.jwt, process.env.JWT_SECRETO)
+          const [result] =  await pool.query('SELECT * FROM tblusuarios WHERE id = ?', [decodificada.id])
+              if(!result){return next()}
+              req.email = result[0]
+              console.log('autenticado')
+              return next()
+        
+      } catch (error) {
+          console.log(error)
+          return next()
+      }
+  }else{
+      res.redirect('/login')        
+  }
+}
+
+export const logout = (req, res)=>{
+  res.clearCookie('jwt')   
+  return res.redirect('/')
 }
