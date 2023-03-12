@@ -58,9 +58,6 @@ export const createUsuarios = async (req, res) => {
 
 export const loginUsuarios = async (req, res) => {
  
-  
- 
-
   try {
     const email = req.body.email
     const password = req.body.password
@@ -91,6 +88,7 @@ export const loginUsuarios = async (req, res) => {
           }
           res.cookie('jwt', token, cookiesOptions)
           console.log("¡LOGIN CORRECTO!")
+          res.status(200).send('usuario corecto')
         }
        
       
@@ -98,6 +96,7 @@ export const loginUsuarios = async (req, res) => {
 
   } catch (error) {
     console.log(error)
+    res.status(400).send(error)
   }
 }
 
