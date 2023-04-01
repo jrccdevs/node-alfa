@@ -121,6 +121,8 @@ export const authenticacion = async (req, res, next)=>{
 }
 
 export const logout = (req, res)=>{
-  res.clearCookie('jwt')   
+  res.clearCookie('jwt')  
+  console.log('sesion cerrarda') 
+  res.status(200).send('Sesión cerrada exitosamente.');
   return res.redirect('/')
 }

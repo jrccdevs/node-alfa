@@ -151,7 +151,7 @@ export const getProductosInyectable = async (req, res) => {
 export const getProductosJarabe = async (req, res) => {
   try {
     const [result] = await pool.query(
-      "SELECT * FROM tblproductos WHERE formafarmaceutica = 'JARABE' ORDER BY nombreproducto DESC"
+      "SELECT * FROM tblproductos WHERE formafarmaceutica = 'JARABES' ORDER BY nombreproducto DESC"
     );
     res.json(result);
   } catch (error) {
@@ -217,7 +217,7 @@ export const getProductosSupositorio = async (req, res) => {
 export const getProductosSuspencion = async (req, res) => {
   try {
     const [result] = await pool.query(
-      "SELECT * FROM tblproductos WHERE formafarmaceutica = 'SUSPENCION' ORDER BY nombreproducto DESC"
+      "SELECT * FROM tblproductos WHERE formafarmaceutica = 'SUSPENSION' ORDER BY nombreproducto DESC"
     );
     res.json(result);
   } catch (error) {
@@ -228,7 +228,7 @@ export const getProductosSuspencion = async (req, res) => {
 export const getProductosTableta = async (req, res) => {
   try {
     const [result] = await pool.query(
-      "SELECT * FROM tblproductos WHERE formafarmaceutica = 'TABLETA' ORDER BY nombreproducto DESC"
+      "SELECT * FROM tblproductos WHERE formafarmaceutica = 'TABLETAS' ORDER BY nombreproducto DESC"
     );
     res.json(result);
   } catch (error) {
