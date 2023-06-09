@@ -4,6 +4,7 @@ import {
     getProductosId,
     getFormaFarma,
     getProductosCate,
+    getProductosCarrucel,
 
     // getForma,
     getProductosCapsulas,
@@ -33,6 +34,7 @@ const router = Router();
 // mostrando todos los productos
 router.get("/productos", authenticacion, getProductos);
 router.get("/productos/:id", getProductosId);
+router.get("/carrucel/", getProductosCarrucel);
 
 // router.get("/forma", getForma);
 

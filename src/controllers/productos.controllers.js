@@ -2,6 +2,19 @@ import { uploadImage } from "../libs/cloudinary.js";
 import { pool } from "../db.js";
 import fs from "fs-extra";
 
+//mostrar los productos por carrucel activo
+export const getProductosCarrucel = async (req, res) => {
+  try {
+    const [result] = await pool.query(
+      "SELECT * FROM tblproductos WHERE carrucel= ACTIVO ORDER BY nombreproducto DESC"
+    );
+    res.json(result);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+
 //mostrando todos los productos
 export const getProductos = async (req, res) => {
   try {
