@@ -6,7 +6,7 @@ import fs from "fs-extra";
 export const getProductosCarrucel = async (req, res) => {
   try {
     const [result] = await pool.query(
-      "SELECT * FROM tblproductos WHERE carrucel= ACTIVO ORDER BY nombreproducto DESC"
+      "SELECT * FROM tblproductos WHERE carrucel= 'ACTIVO' ORDER BY nombreproducto DESC"
     );
     res.json(result);
   } catch (error) {
