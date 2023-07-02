@@ -14,6 +14,20 @@ export const uploadImage = async (filePath) => {
   });
 };
 
+
+export const uploadProspecto = async (filePath) => {
+  return await cloudinary.uploader.upload(filePath, {
+  //  folder: "AlfaSA",
+  folder: "prospectoAlfaSA",
+  });
+
+};
+  export const uploadControl = async (filePath) => {
+    return await cloudinary.uploader.upload(filePath, {
+    //  folder: "AlfaSA",
+    folder: "controlAlfaSA",
+    });
+};
 /*export const deleteImage = async (id) => {
   return await cloudinary.uploader.destroy(id);
 };*/

@@ -1,4 +1,4 @@
-import { uploadImage } from "../libs/cloudinary.js";
+import { uploadControl } from "../libs/cloudinary.js";
 import { pool } from "../db.js";
 import fs from 'fs-extra';
 
@@ -13,7 +13,7 @@ export const createImagenes = async (req, res) => {
   
     let image;
     if (req.files.image) {
-      const result = await uploadImage(req.files.image.tempFilePath);
+      const result = await uploadControl(req.files.image.tempFilePath);
      
       await fs.remove(req.files.image.tempFilePath);
       image = result.secure_url
@@ -22,7 +22,7 @@ export const createImagenes = async (req, res) => {
     }
     //const {imagen} = image;
     const [resultado] = await pool.query(
-      "INSERT INTO tblcarrucel(nombre, image, estado, categoria) VALUES (?, ?, ?, ?)",
+      "INSERT INTO tblimagenes(nombre, image, estado, categoria) VALUES (?, ?, ?, ?)",
       [nombre,
       estado,
       categoria,
@@ -50,7 +50,7 @@ export const createImagenes = async (req, res) => {
 
     try {
       const [result] = await pool.query(
-        "SELECT * FROM tblcarrucel  ORDER BY nombre DESC"
+        "SELECT * FROM tblimagenes  ORDER BY nombre DESC"
       );
       res.json(result);
     } catch (error) {

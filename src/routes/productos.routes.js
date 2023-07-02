@@ -33,6 +33,7 @@ import {
 const router = Router();
 // mostrando todos los productos
 router.get("/productos", authenticacion, getProductos);
+router.get("/productos", getProductos);
 router.get("/productos/:id", getProductosId);
 router.get("/carrucel", getProductosCarrucel);
 

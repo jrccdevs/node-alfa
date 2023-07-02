@@ -1,4 +1,4 @@
-import { uploadImage } from "../libs/cloudinary.js";
+import { uploadImage, uploadProspecto } from "../libs/cloudinary.js";
 import { pool } from "../db.js";
 import fs from "fs-extra";
 
@@ -273,8 +273,9 @@ export const createProductos = async (req, res) => {
       nombreproducto,
       principioactivo,
       accionterapeutica,
+      categoria,
       formafarmaceutica,
-      precio,
+      carrucel,
       presentacion,
     } = req.body;
 
@@ -287,18 +288,32 @@ export const createProductos = async (req, res) => {
       //public_id: result.public_id,
       // };
     }
+
+    let prospecto;
+    if (req.files.prospecto) {
+      const result = await uploadProspecto(req.files.prospecto.tempFilePath);
+
+      await fs.remove(req.files.prospecto.tempFilePath);
+      prospecto = result.secure_url;
+      //public_id: result.public_id,
+      // };
+    }
+
+
     //const {imagen} = image;
     const [resultado] = await pool.query(
-      "INSERT INTO tblproductos(codigoproducto, nombreproducto, principioactivo, accionterapeutica, formafarmaceutica, precio, presentacion, image) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+      "INSERT INTO tblproductos(codigoproducto, nombreproducto, principioactivo, accionterapeutica,categoria, formafarmaceutica, carrucel, presentacion, image, prospecto) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
       [
         codigoproducto,
         nombreproducto,
         principioactivo,
         accionterapeutica,
+        categoria,
         formafarmaceutica,
-        precio,
+        carrucel,
         presentacion,
         image,
+        prospecto,
       ]
     );
 
@@ -310,10 +325,12 @@ export const createProductos = async (req, res) => {
       nombreproducto,
       principioactivo,
       accionterapeutica,
+      categoria,
       formafarmaceutica,
-      precio,
+      carrucel,
       presentacion,
       image,
+      prospecto,
     });
   } catch (error) {
     console.log(error);
