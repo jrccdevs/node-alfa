@@ -47,7 +47,7 @@ export const getProductosId = async (req, res) => {
 export const getFormaFarma = async (req, res) => {
   try {
     const [result] = await pool.query(
-      "SELECT * FROM tblproductos  ORDER BY nombreproducto DESC"
+      "SELECT * FROM tblproductos  ORDER BY nombreproducto ASC"
     );
     res.json(result);
   } catch (error) {
