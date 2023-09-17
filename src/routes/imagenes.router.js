@@ -1,6 +1,10 @@
 import { Router } from "express";
 import { check, validationResult } from 'express-validator'
-import {createImagenes, getImagenes} from '../controllers/imagenes.controllers.js';
+import {createImagenes, getImagenes, deleteImagenes, updateImagenes,
+  getImagenesNoticias,
+  getImagenesBanner,
+  getImagenesVademecum
+} from '../controllers/imagenes.controllers.js';
 
 
 const router = Router();
@@ -27,9 +31,18 @@ const router = Router();
  createCarrucel);
  */
 
-
+// mostrando todos los productos
  router.post("/imagenes", createImagenes);
 router.get("/imagenes", getImagenes);
+router.get("/imagenes/:id", updateImagenes);
+router.get("/imagenes/:id", deleteImagenes);
+
+// mostrando todos los productos
+router.get("/imagenes", getImagenesBanner);
+router.get("/imagenes", getImagenesNoticias);
+router.get("/imagenes", getImagenesVademecum);
+
+
 export default router;
 
 

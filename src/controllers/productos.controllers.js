@@ -299,7 +299,6 @@ export const createProductos = async (req, res) => {
       // };
     }
 
-
     //const {imagen} = image;
     const [resultado] = await pool.query(
       "INSERT INTO tblproductos(codigoproducto, nombreproducto, principioactivo, accionterapeutica,categoria, formafarmaceutica, carrucel, presentacion, image, prospecto) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
