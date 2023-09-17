@@ -4,7 +4,8 @@ import {createImagenes, getImagenes, deleteImagenes, updateImagenes,
   getImagenesNoticias,
   getImagenesBanner,
   getImagenesVademecum,
-  getImagenesId
+  getImagenesId,
+  getFormaImage
 } from '../controllers/imagenes.controllers.js';
 
 
@@ -38,7 +39,7 @@ router.get("/imagenes", getImagenes);
 router.get("/imagenes/:id", getImagenesId);
 router.put("/imagenes/:id", updateImagenes);
 router.delete("/imagenes/:id", deleteImagenes);
-
+router.get("/formaImage", getFormaImage);
 // mostrando todos los productos
 router.get("/imagenes", getImagenesBanner);
 router.get("/imagenes", getImagenesNoticias);

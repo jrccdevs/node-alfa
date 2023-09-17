@@ -2,6 +2,20 @@ import { uploadControl } from "../libs/cloudinary.js";
 import { pool } from "../db.js";
 import fs from 'fs-extra';
 
+
+//mostrando todos las formas farmaceuticas
+export const getFormaImage = async (req, res) => {
+  try {
+    const [result] = await pool.query(
+      "SELECT * FROM tblimagenes  ORDER BY nombre DESC"
+    );
+    res.json(result);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+
 export const createImagenes = async (req, res) => {
 
 
@@ -42,6 +56,7 @@ export const createImagenes = async (req, res) => {
      } catch (error) {
        console.log(error)
        return res.status(500).json({ message: error.message });
+       console.log(error)
      }
   };
   
