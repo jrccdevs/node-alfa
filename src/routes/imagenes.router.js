@@ -34,8 +34,8 @@ const router = Router();
 // mostrando todos los productos
  router.post("/imagenes", createImagenes);
 router.get("/imagenes", getImagenes);
-router.get("/imagenes/:id", updateImagenes);
-router.get("/imagenes/:id", deleteImagenes);
+router.put("/imagenes/:id", updateImagenes);
+router.delete("/imagenes/:id", deleteImagenes);
 
 // mostrando todos los productos
 router.get("/imagenes", getImagenesBanner);
