@@ -78,6 +78,25 @@ export const createImagenes = async (req, res) => {
     }
   };
   
+//mostrando detalle de imagenes por ID
+export const getImagenesId = async (req, res) => {
+  // Recogemos un parametro por la url
+  const id = req.params.id;
+
+  try {
+    const [result] = await pool.query(
+      "SELECT * FROM tblimagenes WHERE id = ?",
+      [id]
+    );
+    res.json(result);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+
+
+
   export const deleteImagenes = async (req, res) => {
     try {
       const [result] = await pool.query("DELETE FROM tblimagenes WHERE id = ?", [

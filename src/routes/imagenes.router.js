@@ -3,7 +3,8 @@ import { check, validationResult } from 'express-validator'
 import {createImagenes, getImagenes, deleteImagenes, updateImagenes,
   getImagenesNoticias,
   getImagenesBanner,
-  getImagenesVademecum
+  getImagenesVademecum,
+  getImagenesId
 } from '../controllers/imagenes.controllers.js';
 
 
@@ -34,6 +35,7 @@ const router = Router();
 // mostrando todos los productos
  router.post("/imagenes", createImagenes);
 router.get("/imagenes", getImagenes);
+router.get("/imagenes/:id", getImagenesId);
 router.put("/imagenes/:id", updateImagenes);
 router.delete("/imagenes/:id", deleteImagenes);
 
