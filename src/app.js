@@ -15,8 +15,10 @@ const app = express();
 //console.log(__dirname)
 
 const corsOrigin ={
-  origin: /\.onrender\.com$/,
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",};
+  origin:'http://localhost:3000', //or whatever port your frontend is using
+    credentials:true,            
+    optionSuccessStatus:200,
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",};
 
 app.use(cors(corsOrigin));
 app.use(express.json());
