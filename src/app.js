@@ -14,7 +14,11 @@ const app = express();
 //const __dirname = dirname(fileURLToPath(import.meta.url));
 //console.log(__dirname)
 
-app.use(cors());
+const corsOrigin ={
+  origin: /\.onrender\.com$/,
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",};
+
+app.use(cors(corsOrigin));
 app.use(express.json());
 
 
