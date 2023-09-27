@@ -1,4 +1,5 @@
 {
+  "proxy": "http://localhost:3000",
   "name": "alfaservidor",
   "version": "1.0.0",
   "description": "",
