@@ -7,6 +7,11 @@ cloudinary.config({
   api_secret: "YrNIZDQzP2fHthHuyLMsRaQMncY",
 });
 
+const corsOptions = {
+  origin: "*", 
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+};
+
 export const uploadImage = async (filePath) => {
   return await cloudinary.uploader.upload(filePath, {
   //  folder: "AlfaSA",
