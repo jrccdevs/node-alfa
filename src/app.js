@@ -15,7 +15,7 @@ const app = express();
 //console.log(__dirname)
 
 const corsOrigin ={
-    origin: "https://reactaap.vercel.app",  
+    origin: "*",  
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",};
 
 app.use(cors(corsOrigin));
