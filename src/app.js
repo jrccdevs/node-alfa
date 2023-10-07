@@ -2,7 +2,7 @@ import express from 'express'
 import fileUpload from "express-fileupload";
 import cookieParser from 'cookie-parser'
 
-import cors from 'cors'
+//import cors from 'cors'
 import './config.js'
 import indexRoutes from './routes/index.routes.js'
 import productosRoutes from './routes/productos.routes.js'
@@ -14,11 +14,12 @@ const app = express();
 //const __dirname = dirname(fileURLToPath(import.meta.url));
 //console.log(__dirname)
 
-const corsOrigin ={
-    origin: "*",  
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",};
-
-app.use(cors(corsOrigin));
+app.use((req,res,next)=>{
+  res.setHeader('Access-Control-Allow-Origin','*');
+  res.setHeader('Access-Control-Allow-Methods','GET,POST,PUT,PATCH,DELETE');
+  res.setHeader('Access-Control-Allow-Methods','Content-Type','Authorization');
+  next(); 
+})
 app.use(express.json());
 
 
