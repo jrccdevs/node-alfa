@@ -8,18 +8,16 @@ import indexRoutes from './routes/index.routes.js'
 import productosRoutes from './routes/productos.routes.js'
 import imagenesRoutes from './routes/imagenes.router.js'
 import usuariosRoutes from './routes/authenticacion.routes.js'
-
+import cors from 'cors'
 
 const app = express();
 //const __dirname = dirname(fileURLToPath(import.meta.url));
 //console.log(__dirname)
 
-app.use((req,res,next)=>{
-  res.setHeader('Access-Control-Allow-Origin','*');
-  res.setHeader('Access-Control-Allow-Methods','GET,POST,PUT,PATCH,DELETE');
-  res.setHeader('Access-Control-Allow-Methods','Content-Type','Authorization');
-  next(); 
-})
+
+
+
+app.use(cors())
 app.use(express.json());
 
 
