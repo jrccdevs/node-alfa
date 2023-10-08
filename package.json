@@ -1,5 +1,5 @@
 {
-  "proxy": "http://localhost:3000",
+  "proxy": "https://reactaap.vercel.app",
   "name": "alfaservidor",
   "version": "1.0.0",
   "description": "",
