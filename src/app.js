@@ -15,17 +15,25 @@ const app = express();
 //console.log(__dirname)
 
 
+app.use(cors({
+  origin: (origin, callback) => {
+    const ACCEPTED_ORIGINS = [
+      'http://localhost:3000',
+      'https://reactaap.vercel.app'
+      
+    ]
 
+    if (ACCEPTED_ORIGINS.includes(origin)) {
+      return callback(null, true)
+    }
 
-app.use(cors())
-app.use((req,res,next)=>{
-  res.header('Access-Control-Allow-Headers, *, Access-Control-Allow-Origin', 'Origin, X-Requested-with, Content_Type,Accept,Authorization','https://reactaap.vercel.app');
-  if(req.method === 'OPTIONS') {
-      res.header('Access-Control-Allow-Methods','PUT,POST,PATCH,DELETE,GET,OPTIONS');
-      return res.status(200).json({});
+    if (!origin) {
+      return callback(null, true)
+    }
+
+    return callback(new Error('Not allowed by CORS'))
   }
-  next();
-});
+}))
 app.use(express.json());
 
 
