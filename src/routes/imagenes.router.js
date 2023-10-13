@@ -41,9 +41,9 @@ router.put("/imagenes/:id", updateImagenes);
 router.delete("/imagenes/:id", deleteImagenes);
 router.get("/formaImage", getFormaImage);
 // mostrando todos los productos
-router.get("/imagenes", getImagenesBanner);
-router.get("/imagenes", getImagenesNoticias);
-router.get("/imagenes", getImagenesVademecum);
+router.get("/banner", getImagenesBanner);
+router.get("/noticias", getImagenesNoticias);
+router.get("/vademecum", getImagenesVademecum);
 
 
 export default router;
