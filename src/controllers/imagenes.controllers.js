@@ -143,7 +143,7 @@ export const getImagenesId = async (req, res) => {
   export const getImagenesNoticias = async (req, res) => {
     try {
       const [result] = await pool.query(
-        "SELECT * FROM tblimagenes WHERE categoria= 'NOTICIAS' AND estado = 'ACTIVO' ORDER BY nombreproducto DESC"
+        "SELECT * FROM tblimagenes WHERE categoria= 'NOTICIAS' AND estado = 'ACTIVO' ORDER BY nombre DESC"
       );
       res.json(result);
     } catch (error) {
@@ -155,7 +155,7 @@ export const getImagenesId = async (req, res) => {
   export const getImagenesVademecum = async (req, res) => {
     try {
       const [result] = await pool.query(
-        "SELECT * FROM tblimagenes WHERE categoria= 'VADEMECUM' AND estado = 'ACTIVO' ORDER BY nombreproducto DESC"
+        "SELECT * FROM tblimagenes WHERE categoria= 'VADEMECUM' AND estado = 'ACTIVO' ORDER BY nombre DESC"
       );
       res.json(result);
     } catch (error) {
