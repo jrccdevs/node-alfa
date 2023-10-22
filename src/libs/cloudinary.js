@@ -36,3 +36,7 @@ export const uploadProspecto = async (filePath) => {
 /*export const deleteImage = async (id) => {
   return await cloudinary.uploader.destroy(id);
 };*/
+
+export const deleteImage = async (publicId) => {
+  return await cloudinary.uploader.destroy(publicId)
+}
