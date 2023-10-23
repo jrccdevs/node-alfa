@@ -1,4 +1,4 @@
-import { uploadControl, deleteImage } from "../libs/cloudinary.js";
+import { uploadControl } from "../libs/cloudinary.js";
 import { pool } from "../db.js";
 import fs from 'fs-extra';
 
@@ -16,8 +16,6 @@ export const getFormaImage = async (req, res) => {
 };
 
 
-
-
 export const createImagenes = async (req, res) => {
 
 
@@ -31,9 +29,9 @@ export const createImagenes = async (req, res) => {
     if (req.files?.image) {
       const result = await uploadControl(req.files.image.tempFilePath);
      
-      await fs.unlink(req.files.image.tempFilePath);
+      await fs.remove(req.files.image.tempFilePath);
       image = result.secure_url
-      public_id= result.public_id
+        //public_id: result.public_id,
      // };
     }
     //const {imagen} = image;
@@ -122,9 +120,7 @@ export const getImagenesId = async (req, res) => {
   
       if (result.affectedRows === 0)
         return res.status(404).json({ message: "Task not found" });
-
-       //linea nueva para eliminar la imagen de cloudinary
-        await deleteImage(result.image.public_id)
+  
       return res.sendStatus(204);
     } catch (error) {
       return res.status(500).json({ message: error.message });

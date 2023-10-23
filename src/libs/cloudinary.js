@@ -33,10 +33,10 @@ export const uploadProspecto = async (filePath) => {
     folder: "controlAlfaSA",
     });
 };
-/*export const deleteImage = async (id) => {
+export const deleteImage = async (id) => {
   return await cloudinary.uploader.destroy(id);
-};*/
+};
 
-export const deleteImage = async (publicId) => {
+/* export const deleteImage = async (publicId) => {
   return await cloudinary.uploader.destroy(publicId)
-}
+} */

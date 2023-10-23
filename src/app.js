@@ -37,7 +37,12 @@ app.use(cors({
 app.use(express.json());
 
 
-
+app.use(
+    fileUpload({
+      tempFileDir: "./cargarimg",
+      useTempFiles: true,
+    })
+  );
 app.use(cookieParser())
 
 app.use(indexRoutes);

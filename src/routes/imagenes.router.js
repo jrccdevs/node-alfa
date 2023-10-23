@@ -8,7 +8,7 @@ import {createImagenes, getImagenes, deleteImagenes, updateImagenes,
   getFormaImage
 } from '../controllers/imagenes.controllers.js';
 
-import fileUpload from "express-fileupload";
+//import fileUpload from "express-fileupload";
 
 
 const router = Router();
@@ -36,17 +36,23 @@ const router = Router();
  */
 
 // mostrando todos los productos
- //router.post("/imagenes", createImagenes);
+ router.post("/imagenes", createImagenes);
 
- router.post("/imagenes",fileUpload({
+ /* router.post("/imagenes",fileUpload({
   useTempFiles: true,
   tempFileDir: "./uploads",
-}), createImagenes);
+}),  createImagenes);*/
 
 router.get("/imagenes", getImagenes);
 router.get("/imagenes/:id", getImagenesId);
 router.put("/imagenes/:id", updateImagenes);
 router.delete("/imagenes/:id", deleteImagenes);
+
+/* router.delete("/imagenes/:id",fileUpload({
+  useTempFiles: true,
+  tempFileDir: "./uploads",
+}), deleteImagenes);
+ */
 router.get("/formaImage", getFormaImage);
 // mostrando todos los productos
 router.get("/banner", getImagenesBanner);
