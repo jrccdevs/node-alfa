@@ -1,13 +1,14 @@
 import express from 'express'
 import fileUpload from "express-fileupload";
 import cookieParser from 'cookie-parser'
-
+import bodyParser from 'body-parser';
 
 import './config.js'
 import indexRoutes from './routes/index.routes.js'
 import productosRoutes from './routes/productos.routes.js'
 import imagenesRoutes from './routes/imagenes.router.js'
 import usuariosRoutes from './routes/authenticacion.routes.js'
+import bannerempRoutes from './routes/banneremp.routes.js'
 import cors from 'cors'
 
 const app = express();
@@ -34,8 +35,10 @@ app.use(cors({
     return callback(new Error('Not allowed by CORS'))
   }
 }))
-app.use(express.json());
-
+app.use(express.json({
+  limit: '50mb'
+}));
+app.use(bodyParser.json());
 
 app.use(
     fileUpload({
@@ -49,6 +52,7 @@ app.use(indexRoutes);
 app.use(productosRoutes);
 app.use(imagenesRoutes);
 app.use(usuariosRoutes);
+app.use(bannerempRoutes);
 
 
 

@@ -5,7 +5,8 @@ import {createImagenes, getImagenes, deleteImagenes, updateImagenes,
   getImagenesBanner,
   getImagenesVademecum,
   getImagenesId,
-  getFormaImage
+  getFormaImage,
+  getImagenesBannerRespon
 } from '../controllers/imagenes.controllers.js';
 
 //import fileUpload from "express-fileupload";
@@ -55,10 +56,11 @@ router.delete("/imagenes/:id", deleteImagenes);
  */
 router.get("/formaImage", getFormaImage);
 // mostrando todos los productos
+router.get("/responbanner", getImagenesBannerRespon);
 router.get("/banner", getImagenesBanner);
 router.get("/noticias", getImagenesNoticias);
 router.get("/vademecum", getImagenesVademecum);
-
+getImagenesBannerRespon
 
 export default router;
 

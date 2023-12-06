@@ -15,6 +15,7 @@ export const getFormaImage = async (req, res) => {
   }
 };
 
+//creando imagenes 
 
 export const createImagenes = async (req, res) => {
 
@@ -128,6 +129,19 @@ export const getImagenesId = async (req, res) => {
   };
   
 // mostrar imagenes del banner
+
+export const getImagenesBannerRespon = async (req, res) => {
+  try {
+    const [result] = await pool.query(
+      "SELECT * FROM tblimagenes WHERE categoria= 'RESPONSIVOBANNER' AND estado = 'ACTIVO' ORDER BY nombre DESC"
+    );
+    res.json(result);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+
   export const getImagenesBanner = async (req, res) => {
     try {
       const [result] = await pool.query(

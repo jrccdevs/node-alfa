@@ -1,4 +1,7 @@
 import { v2 as cloudinary } from "cloudinary";
+/* import multer from'multer';
+import { CloudinaryStorage } from'multer-storage-cloudinary'; */
+
 //import { API_KEY, API_SECRET, CLOUD_NAME } from "../config.js";
 
 cloudinary.config({
@@ -6,6 +9,18 @@ cloudinary.config({
   api_key: "641645262887677",
   api_secret: "YrNIZDQzP2fHthHuyLMsRaQMncY",
 });
+
+/* const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: 'carpeta-de-almacenamiento-en-cloudinary',
+    allowed_formats: ['jpg', 'png'],
+    // Ajusta el límite de tamaño aquí (en bytes)
+    maxFileSize: 10 * 1024 * 1024,
+  },
+});
+
+const upload = multer({ storage: storage }); */
 
 const corsOptions = {
   origin: "*", 
@@ -40,3 +55,14 @@ export const deleteImage = async (id) => {
 /* export const deleteImage = async (publicId) => {
   return await cloudinary.uploader.destroy(publicId)
 } */
+
+/*carga de imagenes del banner personalizado y empresa */
+
+ export const uploadBannerEmpresa = async (filePath) => {
+    return await cloudinary.uploader.upload(filePath, {
+    //  folder: "AlfaSA",
+    folder: "bannerempAlfaSA",
+    allowed_formats: ['jpeg', 'jpg', 'png', 'mp4'],
+    });
+};
+
