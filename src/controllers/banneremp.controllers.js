@@ -152,6 +152,37 @@ export const getEmpresaId = async (req, res) => {
 };
 
 
+//mostrando detalle de imagenes por ID
+export const getMovilId = async (req, res) => {
+  // Recogemos un parametro por la url
+  const id = req.params.id;
+
+  try {
+    const [result] = await pool.query(
+      "SELECT * FROM tblemprebanner WHERE id = ? and categoria = 'MOVIL'",
+      [id]
+    );
+    res.json(result);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
+//mostrando detalle de imagenes por ID
+export const getBannerId = async (req, res) => {
+  // Recogemos un parametro por la url
+  const id = req.params.id;
+
+  try {
+    const [result] = await pool.query(
+      "SELECT * FROM tblemprebanner WHERE id = ? and categoria = 'BANNER'",
+      [id]
+    );
+    res.json(result);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
 
 
   export const deleteEmpresa = async (req, res) => {

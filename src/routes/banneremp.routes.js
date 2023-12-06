@@ -7,6 +7,8 @@ import {createImagenesEmpresa, getEmpresa, updateImagenes, getEmpresaId,
   deleteEmpresa,
   getMovil,
   getBanner,
+  getBannerId,
+  getMovilId,
  
 } from '../controllers/banneremp.controllers.js';
 
@@ -89,6 +91,8 @@ const router = Router();
   useTempFiles: true,
   tempFileDir: "./uploads",
 }),  createImagenes);*/
+router.get("/emprebanner/:id", getBannerId);
+router.get("/empremovil/:id", getMovilId);
 router.get("/banner", getBanner);
 router.get("/movil", getMovil);
 router.get("/empresa", getEmpresa);
