@@ -277,6 +277,7 @@ export const createProductos = async (req, res) => {
       formafarmaceutica,
       carrucel,
       presentacion,
+      link,
     } = req.body;
 
     let image;
@@ -301,7 +302,7 @@ export const createProductos = async (req, res) => {
 
     //const {imagen} = image;
     const [resultado] = await pool.query(
-      "INSERT INTO tblproductos(codigoproducto, nombreproducto, principioactivo, accionterapeutica,categoria, formafarmaceutica, carrucel, presentacion, image, prospecto) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+      "INSERT INTO tblproductos(codigoproducto, nombreproducto, principioactivo, accionterapeutica,categoria, formafarmaceutica, carrucel, presentacion, image, prospecto, link) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
       [
         codigoproducto,
         nombreproducto,
@@ -313,6 +314,7 @@ export const createProductos = async (req, res) => {
         presentacion,
         image,
         prospecto,
+        link,
       ]
     );
 
@@ -330,6 +332,7 @@ export const createProductos = async (req, res) => {
       presentacion,
       image,
       prospecto,
+      link,
     });
   } catch (error) {
     console.log(error);
