@@ -66,3 +66,19 @@ export const deleteImage = async (id) => {
     });
 };
 
+
+export const uploadBannerAlfa = async (filePath) => {
+  return await cloudinary.uploader.upload(filePath, {
+  //  folder: "AlfaSA",
+  folder: "bannerAlfaSA",
+  allowed_formats: ['jpeg', 'jpg', 'png', 'mp4'],
+  });
+};
+
+export const uploadEmpresaAlfa = async (filePath) => {
+  return await cloudinary.uploader.upload(filePath, {
+  //  folder: "AlfaSA",
+  folder: "empresaAlfaSA",
+  allowed_formats: ['jpeg', 'jpg', 'png', 'mp4'],
+  });
+};
