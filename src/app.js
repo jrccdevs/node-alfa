@@ -9,6 +9,8 @@ import productosRoutes from './routes/productos.routes.js'
 import imagenesRoutes from './routes/imagenes.router.js'
 import usuariosRoutes from './routes/authenticacion.routes.js'
 import bannerempRoutes from './routes/banneremp.routes.js'
+import empresaRoutes from './routes/empresa.routes.js'
+import bannerRoutes from './routes/banner.routes.js'
 import cors from 'cors'
 
 const app = express();
@@ -53,8 +55,8 @@ app.use(productosRoutes);
 app.use(imagenesRoutes);
 app.use(usuariosRoutes);
 app.use(bannerempRoutes);
-
-
+app.use(empresaRoutes);
+app.use(bannerRoutes);
 
 //app.use(express.static(join(__dirname, '../client/dist')))
 export default app
