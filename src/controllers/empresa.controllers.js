@@ -29,7 +29,7 @@ export const createEmpresaAlfa = async (req, res) => {
     }
     //const {imagen} = image;
     const [resultado] = await pool.query(
-      "INSERT INTO tblemprebanner(descripcion, identificador, anio, estado, accion, image) VALUES (?, ?, ?, ?, ?, ?)",
+      "INSERT INTO tblempresa(descripcion, identificador, anio, estado, accion, image) VALUES (?, ?, ?, ?, ?, ?)",
       [descripcion, 
       identificador,
       anio,
@@ -64,7 +64,7 @@ export const createEmpresaAlfa = async (req, res) => {
 
     try {
       const [result] = await pool.query(
-        "SELECT * FROM tblempresa  ORDER BY identificador DESC"
+        "SELECT * FROM tblempresa  ORDER BY identificador ASC"
       );
       res.json(result);
     } catch (error) {

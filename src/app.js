@@ -16,27 +16,15 @@ import cors from 'cors'
 const app = express();
 //const __dirname = dirname(fileURLToPath(import.meta.url));
 //console.log(__dirname)
+const corsOptions = {
+  origin: 'http://localhost:3000' || 'https://reactaap.vercel.app' , // Especifica el origen permitido
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true, // Permite el envío de cookies y encabezados de autenticación
+  optionsSuccessStatus: 204, // Permite que las solicitudes OPTIONS tengan un código de estado 204 (sin contenido)
+};
 
+app.use(cors(corsOptions));
 
-app.use(cors({
-  origin: (origin, callback) => {
-    const ACCEPTED_ORIGINS = [
-      'http://localhost:3000',
-      'https://reactaap.vercel.app'
-      
-    ]
-
-    if (ACCEPTED_ORIGINS.includes(origin)) {
-      return callback(null, true)
-    }
-
-    if (!origin) {
-      return callback(null, true)
-    }
-
-    return callback(new Error('Not allowed by CORS'))
-  }
-}))
 app.use(express.json({
   limit: '50mb'
 }));
