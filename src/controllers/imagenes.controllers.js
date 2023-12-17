@@ -25,6 +25,7 @@ export const createImagenes = async (req, res) => {
       estado,
       categoria,
       accion,
+      tipo,
        } = req.body;
   
     let image;
@@ -38,12 +39,13 @@ export const createImagenes = async (req, res) => {
     }
     //const {imagen} = image;
     const [resultado] = await pool.query(
-      "INSERT INTO tblimagenes(nombre, image, categoria, estado, accion) VALUES (?, ?, ?, ?, ?)",
+      "INSERT INTO tblimagenes(nombre, image, categoria, estado, accion, tipo) VALUES (?, ?, ?, ?, ?, ?)",
       [nombre,
         image,
       categoria,
       estado,
       accion,
+      tipo,
         ]
     );
     console.log(resultado)
@@ -56,6 +58,7 @@ export const createImagenes = async (req, res) => {
       categoria,
       estado,
       accion,
+      tipo,
     });
      } catch (error) {
        console.log(error)
