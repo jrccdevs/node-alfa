@@ -13,8 +13,6 @@ export const createImagenesEmpresa = async (req, res) => {
     const { descripcion,
       estado,
       identificador,
-      anio,
-      categoria,
       accion,
        } = req.body;
   
@@ -42,13 +40,11 @@ export const createImagenesEmpresa = async (req, res) => {
     }
     //const {imagen} = image;
     const [resultado] = await pool.query(
-      "INSERT INTO tblemprebanner(descripcion, estado, identificador, archivo, anio, categoria, image, accion) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+      "INSERT INTO tblemprebanner(descripcion, estado, identificador, archivo, image, accion) VALUES (?, ?, ?, ?, ?, ?)",
       [descripcion,
       estado,
       identificador,
       archivo,
-      anio,
-      categoria,
       image,
       accion
         ]
@@ -62,8 +58,6 @@ export const createImagenesEmpresa = async (req, res) => {
       estado,
       identificador,
       archivo,
-      anio,
-      categoria,
       image,
       accion
       
@@ -81,7 +75,7 @@ export const createImagenesEmpresa = async (req, res) => {
 
     try {
       const [result] = await pool.query(
-        "SELECT * FROM tblemprebanner  ORDER BY identificador DESC"
+        "SELECT * FROM tblemprebanner  ORDER BY identificador ASC"
       );
       res.json(result);
     } catch (error) {
@@ -90,31 +84,9 @@ export const createImagenesEmpresa = async (req, res) => {
   };
 
 
-  export const getMovil = async (req, res) => {
-  
+ 
 
-    try {
-      const [result] = await pool.query(
-        "SELECT * FROM tblemprebanner WHERE categoria = 'MOVIL' and estado = 'ACTIVO'  ORDER BY identificador DESC"
-      );
-      res.json(result);
-    } catch (error) {
-      return res.status(500).json({ message: error.message });
-    }
-  };
-
-  export const getBanner = async (req, res) => {
-  
-
-    try {
-      const [result] = await pool.query(
-        "SELECT * FROM tblemprebanner WHERE categoria = 'BANNER' and estado = 'ACTIVO'  ORDER BY identificador DESC"
-      );
-      res.json(result);
-    } catch (error) {
-      return res.status(500).json({ message: error.message });
-    }
-  };
+ 
 
   export const updateImagenes = async (req, res) => {
     try {
@@ -153,36 +125,8 @@ export const getEmpresaId = async (req, res) => {
 
 
 //mostrando detalle de imagenes por ID
-export const getMovilId = async (req, res) => {
-  // Recogemos un parametro por la url
-  const id = req.params.id;
 
-  try {
-    const [result] = await pool.query(
-      "SELECT * FROM tblemprebanner WHERE id = ? and categoria = 'MOVIL'",
-      [id]
-    );
-    res.json(result);
-  } catch (error) {
-    return res.status(500).json({ message: error.message });
-  }
-};
 
-//mostrando detalle de imagenes por ID
-export const getBannerId = async (req, res) => {
-  // Recogemos un parametro por la url
-  const id = req.params.id;
-
-  try {
-    const [result] = await pool.query(
-      "SELECT * FROM tblemprebanner WHERE id = ? and categoria = 'BANNER'",
-      [id]
-    );
-    res.json(result);
-  } catch (error) {
-    return res.status(500).json({ message: error.message });
-  }
-};
 
 
   export const deleteEmpresa = async (req, res) => {
