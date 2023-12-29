@@ -8,6 +8,7 @@ cloudinary.config({
   cloud_name: "dsfscypwv",
   api_key: "641645262887677",
   api_secret: "YrNIZDQzP2fHthHuyLMsRaQMncY",
+  secure: true,
 });
 
 /* const storage = new CloudinaryStorage({
