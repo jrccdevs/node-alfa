@@ -26,33 +26,57 @@ cloudinary.uploader.upload
 const upload = multer({ storage: storage }); */
 
 const corsOptions = {
-  origin: "*", 
+  origin: ["https://reactaap.vercel.app", "http://localhost:3000"], 
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
 };
 
 export const uploadImage = async (filePath) => {
+  try {
   return await cloudinary.uploader.upload(filePath, {
   //  folder: "AlfaSA",
   folder: "pruebaAlfaSA",
   });
+   } catch (error) {
+    console.error("Error al cargar la imagen:", error);
+    throw error;  // Re-lanza el error para que pueda ser manejado más arriba
+  }
 };
 
 
 export const uploadProspecto = async (filePath) => {
+  try {
   return await cloudinary.uploader.upload(filePath, {
   //  folder: "AlfaSA",
   folder: "prospectoAlfaSA",
   });
-
+} catch (error) {
+  console.error("Error al cargar la imagen:", error);
+  throw error;  // Re-lanza el error para que pueda ser manejado más arriba
+}
 };
+
+
   export const uploadControl = async (filePath) => {
+    try {
     return await cloudinary.uploader.upload(filePath, {
     //  folder: "AlfaSA",
     folder: "controlAlfaSA",
     });
+  } catch (error) {
+    console.error("Error al cargar la imagen:", error);
+    throw error;  // Re-lanza el error para que pueda ser manejado más arriba
+  }
 };
+
+
+
 export const deleteImage = async (id) => {
-  return await cloudinary.uploader.destroy(id);
+  try {
+    return await cloudinary.uploader.destroy(id);
+  } catch (error) {
+    console.error("Error al eliminar la imagen:", error);
+    throw error;
+  }
 };
 
 /* export const deleteImage = async (publicId) => {
@@ -62,26 +86,41 @@ export const deleteImage = async (id) => {
 /*carga de imagenes del banner personalizado y empresa */
 
  export const uploadBannerEmpresa = async (filePath) => {
+  try {
     return await cloudinary.uploader.upload(filePath, {
     //  folder: "AlfaSA",
     folder: "bannerempAlfaSA",
     allowed_formats: ['jpeg', 'jpg', 'png', 'mp4'],
     });
+  } catch (error) {
+    console.error("Error al cargar la imagen:", error);
+    throw error;  // Re-lanza el error para que pueda ser manejado más arriba
+  }
 };
 
 
 export const uploadBannerAlfa = async (filePath) => {
+  try {
   return await cloudinary.uploader.upload(filePath, {
   //  folder: "AlfaSA",
   folder: "bannerAlfaSA",
   allowed_formats: ['jpeg', 'jpg', 'png', 'mp4'],
   });
+} catch (error) {
+  console.error("Error al cargar la imagen:", error);
+  throw error;  // Re-lanza el error para que pueda ser manejado más arriba
+}
 };
 
 export const uploadEmpresaAlfa = async (filePath) => {
+  try {
   return await cloudinary.uploader.upload(filePath, {
   //  folder: "AlfaSA",
   folder: "empresaAlfaSA",
   allowed_formats: ['jpeg', 'jpg', 'png', 'mp4'],
   });
+} catch (error) {
+  console.error("Error al cargar la imagen:", error);
+  throw error;  // Re-lanza el error para que pueda ser manejado más arriba
+}
 };

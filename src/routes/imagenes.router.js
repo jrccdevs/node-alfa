@@ -60,7 +60,12 @@ router.get("/responbanner", getImagenesBannerRespon);
 router.get("/banner", getImagenesBanner);
 router.get("/noticias", getImagenesNoticias);
 router.get("/vademecum", getImagenesVademecum);
-getImagenesBannerRespon
+
+
+router.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Internal Server Error');
+});
 
 export default router;
 
