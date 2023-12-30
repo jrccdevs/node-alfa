@@ -2,15 +2,17 @@ import { v2 as cloudinary } from "cloudinary";
 /* import multer from'multer';
 import { CloudinaryStorage } from'multer-storage-cloudinary'; */
 
-//import { API_KEY, API_SECRET, CLOUD_NAME } from "../config.js";
+import { API_KEY, API_SECRET, CLOUD_NAME } from "../config.js";
 
 cloudinary.config({
-  cloud_name: "dsfscypwv",
-  api_key: "641645262887677",
-  api_secret: "YrNIZDQzP2fHthHuyLMsRaQMncY",
+  cloud_name: CLOUD_NAME,
+  api_key: API_KEY,
+  api_secret: API_SECRET,
+  secure: true
   
 });
-
+ 
+cloudinary.uploader.upload
 /* const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {

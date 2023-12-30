@@ -18,3 +18,8 @@ export const JWT_COOKIE_EXPIRES = process.env.JWT_COOKIE_EXPIRES;
 export const DB_DATABASE = process.env.DB_DATABASE || "nodealfa_web";
 export const DB_PORT = process.env.DB_PORT || 3306;
 
+
+
+export const API_KEY = process.env.API_KEY
+export const API_SECRET = process.env.API_SECRET
+export const CLOUD_NAME = process.env.CLOUD_NAME
