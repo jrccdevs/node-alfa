@@ -20,7 +20,8 @@ app.use(cors({
   origin: (origin, callback) => {
     const ACCEPTED_ORIGINS = [
       'http://localhost:3000',
-      'https://reactaap.vercel.app'
+      'https://reactaap.vercel.app',
+      'https://node-alfa.vercel.app' 
 
     ]
 
