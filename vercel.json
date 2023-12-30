@@ -10,8 +10,19 @@
   
     "routes": [
       {
+        "src": "/api/imagenes/:path*",
+      "methods": ["GET", "POST", "PUT", "DELETE"],
+      "dest": "./controllers/imagenes.controllers.js"
+      },
+      {
         "src": "/(.*)",
         "dest": "/"
       }
-    ]
+    ],
+    "server": {
+      "cors": {
+        "origin": "https://reactaap.vercel.app"
+      }
+    }
+    
   }
