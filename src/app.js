@@ -14,6 +14,10 @@ import bannerRoutes from './routes/banner.routes.js'
 import cors from 'cors'
 
 const app = express();
+
+app.get("/", (req, res)=> {
+  res.send("estamos en la pagina de inicio de alfa node");
+});
 //const __dirname = dirname(fileURLToPath(import.meta.url));
 //console.log(__dirname)
 app.use(cors({
