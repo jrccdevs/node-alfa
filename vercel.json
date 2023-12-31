@@ -13,11 +13,7 @@
         "src": "/(.*)",
         "dest": "/"
       }
-    ],
-    "server": {
-      "cors": {
-        "origin": "https://reactaap.vercel.app"
-      }
-    }
+    ]
+    
     
   }
