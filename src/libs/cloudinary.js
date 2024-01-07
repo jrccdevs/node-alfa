@@ -56,7 +56,7 @@ export const uploadProspecto = async (filePath) => {
 };
 
 
-  export const uploadControl = async (filePath) => {
+ /*  export const uploadControl = async (filePath) => {
     try {
     return await cloudinary.uploader.upload(filePath, {
     //  folder: "AlfaSA",
@@ -66,8 +66,24 @@ export const uploadProspecto = async (filePath) => {
     console.error("Error al cargar la imagen:", error);
     throw error;  // Re-lanza el error para que pueda ser manejado más arriba
   }
-};
+}; */
 
+export const uploadControl = (filePath) => {
+  return new Promise((resolve, reject) => {
+    cloudinary.uploader.upload(filePath, { invalidate: true,  folder: "controlAlfaSA" }, (error, result) => {
+     
+      if (error) {
+        console.log('Error al subir a Cloudinary:', error);
+        reject(error);
+      } else {
+        
+        console.log('Imagen subida a Cloudinary:', result);
+        resolve(result);
+      }
+      
+    });
+  });
+};
 
 
 export const deleteImage = async (id) => {
