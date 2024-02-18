@@ -63,7 +63,7 @@ export const createImagenes = async (req, res) => {
      } catch (error) {
        console.log(error)
        return res.status(500).json({ message: error.message });
-       console.log(error)
+       
      }
   };
   
@@ -96,7 +96,7 @@ export const createImagenes = async (req, res) => {
       res.json(resultado);
     } catch (error) {
       return res.status(500).json({ message: error.message });
-      console-log(error)
+      
     }
   };
   
