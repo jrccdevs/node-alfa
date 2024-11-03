@@ -15,7 +15,7 @@ export const JWT_SECRETO = process.env.JWT_SECRETO;
 export const JWT_TIEMPO_EXPIRA = process.env.JWT_TIEMPO_EXPIRA;
 export const JWT_COOKIE_EXPIRES = process.env.JWT_COOKIE_EXPIRES;
 
-export const DB_DATABASE = process.env.DB_DATABASE || "alfadb";
+export const DB_DATABASE = process.env.DB_DATABASE || "boliviandcode_alfadb";
 export const DB_PORT = process.env.DB_PORT || 3306;
 
 
